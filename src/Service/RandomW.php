@@ -14,7 +14,7 @@ class RandomW
 
     public function getNewWCId(array $allClientId)
     {
-        return $this->customRandom->getRandom('WC', $allClientId, 99999, 10000);
+        return $this->customRandom->getRandom('WCI', $allClientId, 99999, 10000);
     }
     public function getNewWAId(array $allAppareilId)
     {
