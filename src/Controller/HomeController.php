@@ -27,7 +27,7 @@ class HomeController extends AbstractController
     public function index(): JsonResponse
     {
         return $this->json([
-            'message' => 'pong',
+            'message' => 'pong sc',
         ]);
     }
 
