@@ -499,7 +499,19 @@ class ConsomationController extends AbstractController
 
                 //dd($file->readfile());*/
 
-                $fh = fopen($this->getParameter('kernel.project_dir')."\public\consomation\\".$filename,'r');
+                try{
+
+                //for local
+                //$fh = fopen($this->getParameter('kernel.project_dir')."\public\consomation\\".$filename,'r');
+                
+                // for deployed
+                $fh = fopen($this->getParameter('kernel.project_dir')."/public/consomation/".$filename,'r');
+                } catch (\Exception $e) {
+                    return $this->json([
+                        'error'=>"couldn't find file at ".$this->getParameter('kernel.project_dir')."\public\consomation\\".$filename,
+                        'error message' => $e->getMessage()
+                ],500);
+                }
                     while ($line = fgets($fh)) {
                     // <... Do your work with the line ...>
                    // dd($line);
