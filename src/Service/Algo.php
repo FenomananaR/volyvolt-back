@@ -22,8 +22,8 @@ class Algo
         // Installation du générateur
 
 
-        $cout_installation_unitaire = 100000; // Ar par Aina
-        $main_d_oeuvre = 514300; // Ar (défini par Rina, 200 000 Ar)
+        $cout_installation_unitaire = 10000; // Ar par Aina
+        $main_d_oeuvre = 73500; // Ar (défini par Rina, 200 000 Ar)
        // $nb_champ = 1; // 1 par Rina
         $nb_kiosque = $nb_champ; // À saisir
         $consommation_unitaire = 500; // Par Valentin (par semaine ou jour)
@@ -33,7 +33,7 @@ class Algo
         // Densité énergétique
         $densite_energetique = 0.4;
 
-        $CUMP = 2204000; // Défini par la finance
+        $CUMP = 367500; // Défini par la finance
 
         // Estimation de la consommation unitaire = moyenne de la consommation par ménage
 
