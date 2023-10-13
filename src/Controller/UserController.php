@@ -114,7 +114,6 @@ class UserController extends AbstractController
         $clients= $this->clientRepository->findOneById($id);
 
         $client = array();
-
     
             $client['id'] = $clients->getId();
             $client['nom'] = $clients->getNom();
@@ -183,10 +182,13 @@ class UserController extends AbstractController
 
             if($app->getClient()){
                 
-            $appareil[$key]['clientID'] = $app->getClient()->getClientId();
+            $appareil[$key]['clientId'] = $app->getClient()->getClientId();     
+            $appareil[$key]['clientNom'] = $app->getClient()->getNom();
+
             } else {
                 
-            $appareil[$key]['clientID'] = 'pas encore utilisé';
+            $appareil[$key]['clientId'] = "pas encore d'utilisé";
+            $appareil[$key]['clientNom'] = '';
             }
             //$appareil[$key]['clientId'] = $app->getClientId();
             

@@ -4,20 +4,27 @@ namespace App\Service;
 
 class Algo
 {
-    public function add(int $number)
+    public function generateDevis(int $nb_menage, int $duree_contrat, int $localite,int $nb_champ)
     {
-        $nb_menage = 2; // À saisir
-        $Nb_champ = 1; // Par Valentin
+        //organisme,email,numero,localite,distance,nbrmenage,ptkioske,contractduration
+        
+        //$nb_menage = 2; // À saisir
+        //$Nb_champ = 1; // Par Valentin
 
         // Variables de maintenance
-        $duree_contrat = 5; // À saisir
-        $localite = 15; // À saisir
+       // $duree_contrat = 5; // À saisir
+//?
+       // $localite = 15; // À saisir
+
+//?
         $consommable = 1; // À définir par Jacquis
 
         // Installation du générateur
-        $cout_installation_unitaire = 200000; // Ar par Aina
-        $main_d_oeuvre = 200000; // Ar (défini par Rina, 200 000 Ar)
-        $nb_champ = 1; // 1 par Rina
+
+
+        $cout_installation_unitaire = 100000; // Ar par Aina
+        $main_d_oeuvre = 514300; // Ar (défini par Rina, 200 000 Ar)
+       // $nb_champ = 1; // 1 par Rina
         $nb_kiosque = $nb_champ; // À saisir
         $consommation_unitaire = 500; // Par Valentin (par semaine ou jour)
         $engrais = 10000; // Défini par Rina
@@ -26,7 +33,7 @@ class Algo
         // Densité énergétique
         $densite_energetique = 0.4;
 
-        $CUMP = 100000; // Défini par la finance
+        $CUMP = 2204000; // Défini par la finance
 
         // Estimation de la consommation unitaire = moyenne de la consommation par ménage
 
@@ -81,7 +88,7 @@ class Algo
             // Calcul du devis
             $devis_prestation_service = $cout_operationnel + $cout_operationnel * 0.25;
 
-            return $devis_prestation_service;
+            return round($devis_prestation_service);
         //}*/
 
         //return  $offre_production_energie ;

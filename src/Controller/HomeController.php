@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Service\Algo;
 
 use App\Entity\Message;
+use App\Repository\ClientRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -15,11 +16,13 @@ class HomeController extends AbstractController
 
     private $algo;
     private $em;
+    private $clientRepository;
     
-    public function __construct(Algo $algo,EntityManagerInterface $em)
+    public function __construct(Algo $algo,EntityManagerInterface $em, ClientRepository $clientRepository)
     {
         $this->algo = $algo;
         $this->em=$em;
+        $this->clientRepository=$clientRepository;
     }
 
 
@@ -32,13 +35,38 @@ class HomeController extends AbstractController
     }
 
     #[Route('/algo', name: 'app_algo')]
-    public function algo(): JsonResponse
+    public function algo(Request $request): JsonResponse
     {
-        $feno=$this->algo->add(56);
-        dd($feno);
+        //organisme,email,numero,localite,distance,nbrmenage,ptkioske,contractduration//organisme,email,numero,localite,distance,nbrmenage,ptkioske,contractduration
+        //$feno=$this->algo->add(56);
+       // dd($feno);
+
+        $devis = $this->algo->generateDevis(
+            $request->request->get('nbrmenage'),
+            $request->request->get('contractduration'),
+            $request->request->get('distance'),
+            $request->request->get('ptkioske'),
+        );
+
         return $this->json([
-            'message' => 'pong',
+            'devis' => $devis,
+            'organisme'=>$request->request->get('organisme'),
+            'email'=>$request->request->get('email'),
+            'numero'=>$request->request->get('numero'),
+            'localite'=>$request->request->get('localite'),
+            'distance'=>$request->request->get('distance'),
+            'nbrmenage'=>$request->request->get('nbrmenage'),
+            'ptkioske'=>$request->request->get('ptkioske'),
+            'contractduration'=>$request->request->get('contractduration')
         ]);
+    }
+
+    #[Route('/dashboard', name: 'app_dashboard')]
+    public function dashboard(Request $request): JsonResponse
+    {
+        $nbrClient= $this->clientRepository->countClient();
+        //dd($nbrClient);
+        return $this->json(['nbrClient'=>$nbrClient]);
     }
 
     #[Route('/message', name: 'app_message')]

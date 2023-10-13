@@ -668,8 +668,5 @@ class TimeController
         }
   
         return $date;
-    
-
-
 
 */
