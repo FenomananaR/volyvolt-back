@@ -45,7 +45,7 @@ class ConsomationRepository extends ServiceEntityRepository
     return $this->createQueryBuilder('c')
     ->andWhere('c.clientId = :clientId')
     ->setParameter('clientId',$id)
-    ->orderBy('c.date ', 'ASC')
+    ->orderBy('c.date ', 'DESC')
     ->setMaxResults(20)
     ->getQuery()
     ->getResult()
