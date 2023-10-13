@@ -84,7 +84,6 @@ class HomeController extends AbstractController
         $message->setObjet($request->request->get('objet'));
         $message->setMessage($request->request->get('message'));
 
-
         $this->em->getConnection()->beginTransaction();
         try {
 
